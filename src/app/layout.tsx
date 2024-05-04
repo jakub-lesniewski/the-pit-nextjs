@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Lusitana } from "next/font/google";
 import { cn } from "@/lib/utils";
-import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ThemeToggler } from "@/components/theme-toggler";
+import Header from "@/components/header";
+import Footer from "@/components/ui/footer";
+import "./globals.css";
+
 const lusitana = Lusitana({
   weight: ["400", "700"],
   subsets: ["latin"],
@@ -20,15 +22,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body className={cn("font-sans antialiased min-h-full", lusitana.className)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} disableTransitionOnChange={false}>
-          <header className="flex justify-between items-center border-b px-4 py-2">
-            <h1 className="text-2xl">The Pit</h1>
-            <ThemeToggler />
-          </header>
+          <Header />
           {children}
-          <footer className="px-4 py-2 border-t">bingus</footer>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
