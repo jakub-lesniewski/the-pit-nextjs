@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body className={cn("font-sans antialiased min-h-full", lusitana.className)}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} disableTransitionOnChange={false}>
+        <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange={false}>
           <Header />
           {children}
           <Footer />
