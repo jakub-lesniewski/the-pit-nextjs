@@ -7,8 +7,3 @@ datasource db {
   url       = env("POSTGRES_PRISMA_URL")
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
-
-model user {
-  id   String @id @db.Uuid
-  name String @db.VarChar
-}
