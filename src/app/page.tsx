@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -11,9 +12,11 @@ export default function Home() {
         fill={true}
       />
       <div className="flex gap-4">
-        <Button className="text-2xl px-8 py-6" size="lg" variant="default">
-          Sign in
-        </Button>
+        <Link href="authenticated-user">
+          <Button className="text-2xl px-8 py-6" size="lg" variant="default">
+            Sign in
+          </Button>
+        </Link>
         <Button className="text-2xl px-8 py-6" size="lg" variant="outline">
           Register
         </Button>

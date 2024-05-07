@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lusitana } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 import Header from "@/components/header";
 import Footer from "@/components/ui/footer";
 import "./globals.css";
@@ -23,13 +24,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body className={cn("font-sans antialiased min-h-full", lusitana.className)}>
-        <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange={false}>
-          <Header />
-          {children}
-          <Footer />
-        </ThemeProvider>
-      </body>
+      <UserProvider>
+        <body className={cn("font-sans antialiased min-h-full", lusitana.className)}>
+          <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange={false}>
+            <Header />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </body>
+      </UserProvider>
     </html>
   );
 }

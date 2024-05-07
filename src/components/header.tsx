@@ -7,6 +7,7 @@ export default function Header() {
       <Link href="/" className="text-2xl">
         The Pit
       </Link>
+      <a href="/api/auth/login">Login</a>
       <ThemeToggler />
     </header>
   );
