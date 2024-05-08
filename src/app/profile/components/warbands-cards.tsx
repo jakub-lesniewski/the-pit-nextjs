@@ -45,10 +45,10 @@ export default function WarbandsCard() {
                 </li>
               </PopoverTrigger>
               <PopoverContent side="right" align="start" className="flex gap-1 p-1">
-                <Button variant="ghost" className="p-2 py-0">
+                <Button variant="ghost" size="sm">
                   edit
                 </Button>
-                <Button variant="destructive" className="p-2 py-0">
+                <Button variant="destructive" size="sm">
                   delete
                 </Button>
               </PopoverContent>
