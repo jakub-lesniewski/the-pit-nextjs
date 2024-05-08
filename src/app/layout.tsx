@@ -6,6 +6,7 @@ import { UserProvider } from "@auth0/nextjs-auth0/client";
 import Header from "@/components/header";
 import Footer from "@/components/ui/footer";
 import "./globals.css";
+import Image from "next/image";
 
 const lusitana = Lusitana({
   weight: ["400", "700"],
@@ -27,6 +28,12 @@ export default function RootLayout({
       <UserProvider>
         <body className={cn("font-sans antialiased min-h-full", lusitana.className)}>
           <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange={false}>
+            <Image
+              className="object-cover object-center -z-50 dark:invert"
+              src="/mordheimMap.webp"
+              alt="map of Mordheim"
+              fill={true}
+            />
             <Header />
             {children}
             <Footer />
