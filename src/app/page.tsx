@@ -11,16 +11,6 @@ export default function Home() {
         alt="map of Mordheim"
         fill={true}
       />
-      <div className="flex gap-4">
-        <Link href="authenticated-user">
-          <Button className="text-2xl px-8 py-6" size="lg" variant="default">
-            Sign in
-          </Button>
-        </Link>
-        <Button className="text-2xl px-8 py-6" size="lg" variant="outline">
-          Register
-        </Button>
-      </div>
     </main>
   );
 }
