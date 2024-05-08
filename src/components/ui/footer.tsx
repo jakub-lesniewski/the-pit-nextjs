@@ -4,7 +4,7 @@ import { Button } from "./button";
 export default function Footer() {
   return (
     <footer className="px-4 py-2 border-t absolute w-full bottom-0 bg-background/60 backdrop-blur">
-      <div className="flex gap-3 items-center">
+      <div className="flex items-center">
         <p>sources:</p>
         <a href="https://broheim.net/" target="_blank">
           <Button variant="link" className="text-base">
@@ -16,7 +16,7 @@ export default function Footer() {
             mordheimer
           </Button>
         </a>
-        <Link href="/disclaimer" className="ml-auto">
+        <Link href="/disclaimer">
           <Button variant="link" className="text-base">
             disclaimer
           </Button>
