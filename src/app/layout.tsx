@@ -3,7 +3,7 @@ import { Lusitana } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import Header from "@/components/header";
+import Header from "@/components/header/header";
 import Footer from "@/components/ui/footer";
 import "./globals.css";
 import Image from "next/image";
