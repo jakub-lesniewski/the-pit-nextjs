@@ -63,7 +63,7 @@ export default function WarbandCreation() {
       <CardContent className="flex flex-col gap-3">
         <div>
           <Label className="text-base">Warband&apos;s Name</Label>
-          <Input type="text" placeholder="Rottmeister's Fighting Few" id="warbandsName" value={name} max={100} />
+          <Input type="text" placeholder="Rottmeister's Fighting Few" id="warbandsName" max={100} />
         </div>
 
         <div className="flex flex-col gap-1">
