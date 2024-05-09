@@ -12,11 +12,9 @@ export default function Page() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <div className="flex gap-3 flex-col md:flex-row">
-        <ProfileCard user={user} />
-        <WarbandsCard />
-      </div>
-    </main>
+    <div className="flex gap-3 flex-col">
+      <ProfileCard user={user} />
+      <WarbandsCard />
+    </div>
   );
 }

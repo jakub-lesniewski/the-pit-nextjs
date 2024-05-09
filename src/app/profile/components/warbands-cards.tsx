@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import Link from "next/link";
 
 const dummyWarbands = [
   {
@@ -35,6 +36,9 @@ export default function WarbandsCard() {
     <Card>
       <CardContent className="px-6 py-4 flex flex-col gap-3 ">
         <h1 className="text-xl border-b pt-1 pb-4">My warbands</h1>
+        <Link href="/warband-creation">
+          <Button className="text-base">Create Warband</Button>
+        </Link>
         <ul>
           {dummyWarbands.map((warband) => (
             <Popover key={warband.id}>

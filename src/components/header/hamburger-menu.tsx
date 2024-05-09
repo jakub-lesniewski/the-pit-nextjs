@@ -1,7 +1,7 @@
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { UserProfile } from "@auth0/nextjs-auth0/client";
-import { ThemeToggler } from "../theme-toggler";
+import { ThemeToggler } from "../theme/theme-toggler";
 import ProfileButton from "../auth/profile-button";
 import LogoutButton from "../auth/logout-button";
 import LoginButton from "../auth/login-button";

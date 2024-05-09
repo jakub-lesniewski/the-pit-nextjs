@@ -3,7 +3,7 @@ import { Button } from "./button";
 
 export default function Footer() {
   return (
-    <footer className="px-4 py-2 border-t absolute w-full bottom-0 bg-background/60 backdrop-blur">
+    <footer className="px-4 py-2 border-t w-full bg-background/60 backdrop-blur">
       <div className="flex items-center">
         <p>sources:</p>
         <a href="https://broheim.net/" target="_blank">
