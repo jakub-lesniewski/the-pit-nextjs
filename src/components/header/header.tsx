@@ -8,7 +8,6 @@ import Navbar from "./navbar";
 
 export default function Header() {
   const { user } = useUser();
-  console.log(user);
 
   return (
     <header className="border-b px-4 py-2 absolute w-full top-0 bg-background/60 backdrop-blur z-50">
@@ -23,7 +22,7 @@ export default function Header() {
           <HamburgerMenu user={user} />
         </div>
         <div className="hidden md:block">
-          <Navbar />
+          <Navbar user={user} />
         </div>
       </nav>
     </header>
