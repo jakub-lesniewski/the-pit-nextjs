@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import HamburgerMenu from "./hamburger-menu";
-import { useUser } from "@auth0/nextjs-auth0/client";
-import { Button } from "../ui/button";
 import Navbar from "./navbar";
+import { Button } from "../ui/button";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function Header() {
   const { user } = useUser();
@@ -17,11 +17,10 @@ export default function Header() {
             The Pit
           </Button>
         </Link>
-
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <HamburgerMenu user={user} />
         </div>
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Navbar user={user} />
         </div>
       </nav>
