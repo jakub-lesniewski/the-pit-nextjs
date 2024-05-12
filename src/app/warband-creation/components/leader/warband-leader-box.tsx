@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Hero } from "../../page";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { Hero } from "@/types/Hero";
 import WarbandLeaderDialog from "./warband-leader-dialog";
 
 type WarbandLeaderBoxProps = {

@@ -3,31 +3,12 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Warband } from "@/types/Warband";
 import WarbandTitleBox from "./components/warband-title-box";
 import WarbandNameBox from "./components/warband-name-input";
 import WarbandLeaderBox from "./components/leader/warband-leader-box";
 import WarbandHeroesBox from "./components/heroes/warband-heroes-box";
 import WarbandHenchmenBox from "./components/henchmen/warband-henchmen-box";
-
-export type Hero = {
-  id: string;
-  name: string;
-  type: string;
-};
-
-export type Henchmen = {
-  id: string;
-  name: string;
-  type: string;
-  amount: number;
-};
-
-type Warband = {
-  name: string;
-  leader: Hero;
-  heroes: Hero[];
-  henchmen: Henchmen[];
-};
 
 export default function WarbandCreation() {
   const [warband, setWarband] = useState<Warband>({
@@ -74,13 +55,14 @@ export default function WarbandCreation() {
         amount: 1,
       },
     ],
+    funds: 500,
   });
 
-  const { name, leader, heroes, henchmen } = warband;
+  const { name, leader, heroes, henchmen, funds } = warband;
 
   return (
     <Card className="min-w-[400px]">
-      <WarbandTitleBox />
+      <WarbandTitleBox funds={funds} />
       <CardContent className="flex flex-col gap-3">
         <WarbandNameBox />
         <WarbandLeaderBox leader={leader} />
