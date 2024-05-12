@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Hero } from "../page";
+import { Hero } from "../../page";
 
 type WarbandHeroesBoxProps = {
   heroes: Hero[];

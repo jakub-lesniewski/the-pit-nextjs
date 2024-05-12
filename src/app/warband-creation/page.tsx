@@ -4,10 +4,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import WarbandTitleBox from "./components/warband-title-box";
-import WarbandLeaderBox from "./components/warband-leader-box";
-import WarbandHeroesBox from "./components/warband-heroes-box";
-import WarbandHenchmenBox from "./components/warband-henchmen-box";
 import WarbandNameBox from "./components/warband-name-input";
+import WarbandLeaderBox from "./components/leader/warband-leader-box";
+import WarbandHeroesBox from "./components/heroes/warband-heroes-box";
+import WarbandHenchmenBox from "./components/henchmen/warband-henchmen-box";
 
 export type Hero = {
   id: string;
