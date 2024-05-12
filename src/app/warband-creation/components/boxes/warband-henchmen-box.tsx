@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Henchmen } from "../../page";
+import { Henchmen } from "@/types/Henchmen";
 
 type WarbandHenchmenBox = {
   henchmen: Henchmen[];

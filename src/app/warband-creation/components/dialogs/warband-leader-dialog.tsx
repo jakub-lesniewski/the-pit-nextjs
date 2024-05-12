@@ -10,11 +10,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import { X } from "lucide-react";
-import { Weapon } from "@/types/weapon";
-import { Armour, ArmourType } from "@/types/Armour";
+import { Armour, ArmourType, hasArmourType } from "@/types/Armour";
 import { Item } from "@/types/Item";
+import { Weapon, isRanged } from "@/types/Weapon";
+import { useState } from "react";
 
 const dummyWeapons: Weapon[] = [
   {
@@ -44,6 +44,13 @@ const dummyWeapons: Weapon[] = [
     strength: 2,
     range: 7,
     cost: 30,
+  },
+  {
+    id: "5",
+    name: "Dagger",
+    strength: -1,
+    range: undefined,
+    cost: 1,
   },
 ];
 
@@ -88,6 +95,7 @@ const dummyItems: Item[] = [
 ];
 
 export default function WarbandLeaderDialog() {
+  const [leaderName, setLeaderName] = useState<string>("");
   const [leaderWeapons, setLeaderWeapons] = useState<Weapon[]>([]);
   const [leaderArmour, setLeaderArmour] = useState<Armour[]>([]);
   const [leaderItems, setleaderItems] = useState<Item[]>([]);
@@ -96,22 +104,18 @@ export default function WarbandLeaderDialog() {
   const dummyStats = [7, 3, 3, 3, 4, 1, 3, 1, 7];
 
   function addWeapon(weapon: Weapon) {
-    if (leaderWeapons.length < 4) {
+    const meleeCount = leaderWeapons.filter((weapon) => !isRanged(weapon)).length;
+    const rangedCount = leaderWeapons.filter((weapon) => isRanged(weapon)).length;
+
+    if (meleeCount < 2 && !isRanged(weapon)) {
+      setLeaderWeapons((prevWeapons) => [...prevWeapons, weapon]);
+    } else if (rangedCount < 2 && isRanged(weapon)) {
       setLeaderWeapons((prevWeapons) => [...prevWeapons, weapon]);
     }
   }
 
   function addArmour(armour: Armour) {
-    const armourTypeExists = leaderArmour.some((existingArmour) => existingArmour.type === armour.type);
-
-    if (armourTypeExists) {
-      const existingArmourIndex = leaderArmour.findIndex((existingArmour) => existingArmour.type === armour.type);
-      if (existingArmourIndex !== -1) {
-        const newLeaderArmour = [...leaderArmour];
-        newLeaderArmour[existingArmourIndex] = armour;
-        setLeaderArmour(newLeaderArmour);
-      }
-    } else {
+    if (!hasArmourType(leaderArmour, armour.type)) {
       setLeaderArmour((prevArmour) => [...prevArmour, armour]);
     }
   }
@@ -137,15 +141,27 @@ export default function WarbandLeaderDialog() {
 
   return (
     <DialogContent>
-      <div className="space-y-2 px-4 py-2">
+      <div className="space-y-2 px-4 py-2 w-fit">
         <Label htmlFor="name">Name</Label>
-        <Input id="name" placeholder="Guntbert Krahl" />
+        <Input onChange={(e) => setLeaderName(e.target.value)} id="name" placeholder="Guntbert Krahl" />
+      </div>
+
+      <div className="flex w-fit border rounded-md ml-4">
+        {statsHeader.map((stat, index) => (
+          <div className="flex flex-col p-2 items-center" key={index}>
+            <p>{stat}</p>
+            <p>{dummyStats[index]}</p>
+          </div>
+        ))}
       </div>
 
       <div className="space-y-2 px-4">
         <div className="flex gap-3">
           <h2>Weapons</h2>
-          <p>{leaderWeapons.length}/4</p>
+          <div>
+            <p>{leaderWeapons.filter((weapon) => !isRanged(weapon)).length}/2 melee weapons</p>
+            <p>{leaderWeapons.filter((weapon) => isRanged(weapon)).length}/2 ranged weapons</p>
+          </div>
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger>

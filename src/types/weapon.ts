@@ -5,3 +5,7 @@ export type Weapon = {
   range?: number;
   cost: number;
 };
+
+export function isRanged(weapon: Weapon): boolean {
+  return weapon.range !== undefined;
+}

@@ -6,9 +6,9 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Warband } from "@/types/Warband";
 import WarbandTitleBox from "./components/warband-title-box";
 import WarbandNameBox from "./components/warband-name-input";
-import WarbandLeaderBox from "./components/leader/warband-leader-box";
-import WarbandHeroesBox from "./components/heroes/warband-heroes-box";
-import WarbandHenchmenBox from "./components/henchmen/warband-henchmen-box";
+import WarbandHeroesBox from "./components/boxes/warband-heroes-box";
+import WarbandHenchmenBox from "./components/boxes/warband-henchmen-box";
+import WarbandLeaderBox from "./components/boxes/warband-leader-box";
 
 export default function WarbandCreation() {
   const [warband, setWarband] = useState<Warband>({

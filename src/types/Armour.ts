@@ -6,7 +6,11 @@ export type Armour = {
 };
 
 export enum ArmourType {
-  CHEST_PIECE = "Chest Piece",
   HELMET = "Helmet",
+  CHEST_PIECE = "Chest Piece",
   SHIELD = "Shield",
+}
+
+export function hasArmourType(armourList: Armour[], armourType: ArmourType): boolean {
+  return armourList.some((armour) => armour.type === armourType);
 }
