@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning={true}>
       <UserProvider>
         <body className={cn("font-sans antialiased relative", lusitana.className)}>
-          <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange={false}>
+          <ThemeProvider attribute="class" disableTransitionOnChange={false}>
             <Image
               className="object-cover object-center dark:invert -z-50"
               quality={10}

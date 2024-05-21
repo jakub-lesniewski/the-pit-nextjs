@@ -9,54 +9,10 @@ import WarbandNameBox from "./components/warband-name-input";
 import WarbandHeroesBox from "./components/boxes/warband-heroes-box";
 import WarbandHenchmenBox from "./components/boxes/warband-henchmen-box";
 import WarbandLeaderBox from "./components/boxes/warband-leader-box";
+import { dummyWarband } from "./dummyData";
 
 export default function WarbandCreation() {
-  const [warband, setWarband] = useState<Warband>({
-    name: "",
-    leader: {
-      id: "1",
-      name: "Jan Pepik",
-      type: "Mercenary Captain",
-    },
-    heroes: [
-      {
-        id: "1",
-        name: "Tobiasz Marszałek",
-        type: "Youngblood",
-      },
-      {
-        id: "2",
-        name: "Daniik Oplachenko",
-        type: "Champion",
-      },
-      {
-        id: "3",
-        name: "Ryszard Jeleń",
-        type: "Youngblood",
-      },
-    ],
-    henchmen: [
-      {
-        id: "1",
-        name: "Dudes",
-        type: "Marksmen",
-        amount: 2,
-      },
-      {
-        id: "2",
-        name: "Dudes vol. 1",
-        type: "Swordsmen",
-        amount: 3,
-      },
-      {
-        id: "3",
-        name: "Dudes vol. 2",
-        type: "Warriors",
-        amount: 1,
-      },
-    ],
-    funds: 500,
-  });
+  const [warband, setWarband] = useState<Warband>(dummyWarband);
 
   const { name, leader, heroes, henchmen, funds } = warband;
 
