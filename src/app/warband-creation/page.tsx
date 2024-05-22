@@ -16,15 +16,13 @@ export default function WarbandCreation() {
 
   const { funds, type, leader, heroes, henchmen } = dummyWarbandTemplate;
 
-  function handleModifyHero();
-
   return (
     <Card className="min-w-[400px]">
       <WarbandTitleBox funds={funds} />
       <CardContent className="flex flex-col gap-3">
         <WarbandNameBox />
         <WarbandLeaderBox leaderTemplate={leader} currentLeader={userWarband.leader} />
-        <WarbandHeroesBox heroes={heroes} />
+        <WarbandHeroesBox heroesTemplate={heroes} currentHeroes={userWarband.heroes} />
         <WarbandHenchmenBox henchmen={henchmen} />
       </CardContent>
       <CardFooter>

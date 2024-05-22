@@ -14,7 +14,7 @@ export default function WarbandLeaderBox({ leaderTemplate, currentLeader }: Warb
     <div className="flex flex-col gap-1 border p-4">
       <h2>Leader</h2>
       <Dialog>
-        <DialogTrigger>
+        <DialogTrigger asChild>
           {currentLeader ? (
             <div className="border-b-2 p-2 flex justify-between cursor-pointer">
               <p>{currentLeader.name}</p>

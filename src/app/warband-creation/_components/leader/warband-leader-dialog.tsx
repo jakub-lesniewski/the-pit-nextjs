@@ -20,8 +20,9 @@ type WarbandLeaderDialogProps = {
 
 export default function WarbandLeaderDialog({ leaderTemplate, currentLeader }: WarbandLeaderDialogProps) {
   const [leaderName, setLeaderName] = useState<string>(currentLeader?.name ?? "");
-  const { weapons: leaderWeapons, weaponsHandler } = useWeapons();
-  const { armour: leaderArmour, armourHandlers } = useArmour();
+  console.log(currentLeader);
+  const { weapons: leaderWeapons, weaponsHandler } = useWeapons(currentLeader?.weapons);
+  const { armour: leaderArmour, armourHandlers } = useArmour(currentLeader?.armour);
 
   function handleSubmit() {
     console.log(leaderName);

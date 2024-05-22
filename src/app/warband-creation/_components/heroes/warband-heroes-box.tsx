@@ -1,23 +1,40 @@
 import { Button } from "@/components/ui/button";
-import { Hero } from "../../page";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { CharacterTemplate } from "@/types/characters/CharacterTemplate";
+import { UserCharacter } from "@/types/characters/UserCharacter";
+import { useState } from "react";
+import WarbandHeroDialog from "./warband-hero-dialog";
 
 type WarbandHeroesBoxProps = {
-  heroes: Hero[];
+  heroesTemplate: CharacterTemplate[];
+  currentHeroes?: UserCharacter[];
 };
 
-export default function WarbandHeroesBox({ heroes }: WarbandHeroesBoxProps) {
+export default function WarbandHeroesBox({ heroesTemplate, currentHeroes }: WarbandHeroesBoxProps) {
+  const [selectedHero, setSelectedHero] = useState<UserCharacter>();
+
   return (
     <div className="flex flex-col gap-1 border p-4">
       <h2>Heroes</h2>
-      <Button className="w-full tracking-wide text-base" variant="outline" size="sm">
-        add hero
-      </Button>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button className="w-full tracking-wide text-base" variant="outline" size="sm">
+            add hero
+          </Button>
+        </DialogTrigger>
+        <WarbandHeroDialog heroesTemplate={heroesTemplate} />
+      </Dialog>
       <ol>
-        {heroes.map((hero) => (
-          <li className="border-b-2 p-2 flex justify-between cursor-pointer" key={hero.id}>
-            <p>{hero.name}</p>
-            <p>{hero.type}</p>
-          </li>
+        {currentHeroes?.map((hero) => (
+          <Dialog key={hero.id}>
+            <DialogTrigger asChild>
+              <li className="border-b-2 p-2 flex justify-between cursor-pointer" onClick={() => setSelectedHero(hero)}>
+                <p>{hero.name}</p>
+                <p>{hero.type}</p>
+              </li>
+            </DialogTrigger>
+            <WarbandHeroDialog currentHero={selectedHero} heroesTemplate={heroesTemplate} />
+          </Dialog>
         ))}
       </ol>
     </div>
