@@ -1,4 +1,5 @@
 import { Armour, ArmourType } from "@/types/Armour";
+import { CharacterStats } from "@/types/CharacterStats";
 import { Item } from "@/types/Item";
 import { Warband } from "@/types/Warband";
 import { Weapon } from "@/types/Weapon";
@@ -128,4 +129,14 @@ export const dummyItems: Item[] = [
   },
 ];
 
-export const dummyStats: number[] = [7, 3, 3, 3, 4, 1, 3, 1, 7];
+export const dummyStats: CharacterStats = {
+  movement: 7,
+  weapon_skill: 3,
+  ballistic_skill: 3,
+  strength: 3,
+  toughness: 4,
+  wounds: 1,
+  initiative: 3,
+  attacks: 1,
+  leadership: 7,
+};

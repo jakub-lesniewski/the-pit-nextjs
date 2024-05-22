@@ -1,20 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Warband } from "@/types/Warband";
-import WarbandTitleBox from "./components/warband-title-box";
-import WarbandNameBox from "./components/warband-name-input";
-import WarbandHeroesBox from "./components/boxes/warband-heroes-box";
-import WarbandHenchmenBox from "./components/boxes/warband-henchmen-box";
-import WarbandLeaderBox from "./components/boxes/warband-leader-box";
+import WarbandTitleBox from "../../components/warband-editor/warband-title-box";
+import WarbandNameBox from "../../components/warband-editor/warband-name-input";
+import WarbandHeroesBox from "./_components/heroes/warband-heroes-box";
+import WarbandHenchmenBox from "./_components/henchmen/warband-henchmen-box";
+import WarbandLeaderBox from "./_components/leader/warband-leader-box";
 import { dummyWarband } from "./dummyData";
 
 export default function WarbandCreation() {
-  const [warband, setWarband] = useState<Warband>(dummyWarband);
-
-  const { name, leader, heroes, henchmen, funds } = warband;
+  const { name, leader, heroes, henchmen, funds } = dummyWarband;
 
   return (
     <Card className="min-w-[400px]">
