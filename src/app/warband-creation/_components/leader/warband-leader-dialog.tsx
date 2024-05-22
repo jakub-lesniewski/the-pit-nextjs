@@ -20,17 +20,24 @@ type WarbandLeaderDialogProps = {
 
 export default function WarbandLeaderDialog({ leaderTemplate, currentLeader }: WarbandLeaderDialogProps) {
   const [leaderName, setLeaderName] = useState<string>(currentLeader?.name ?? "");
-  const { weapons: leaderWeapons, weaponsHandler } = useWeapons(currentLeader?.weapons);
-  const { armour: leaderArmour, armourHandlers } = useArmour(currentLeader?.armour);
+  const { weapons: leaderWeapons, weaponsHandler, setWeapons } = useWeapons(currentLeader?.weapons);
+  const { armour: leaderArmour, armourHandlers, setArmour } = useArmour(currentLeader?.armour);
 
-  function handleSubmit() {
+  function handleSubmit(): void {
     console.log(leaderName);
     console.log(leaderWeapons);
     console.log(leaderArmour);
+    resetState();
+  }
+
+  function resetState(): void {
+    setLeaderName(currentLeader?.name || "");
+    setWeapons(currentLeader?.weapons || []);
+    setArmour(currentLeader?.armour || []);
   }
 
   return (
-    <DialogContent>
+    <DialogContent onPointerDownOutside={resetState} onEscapeKeyDown={resetState}>
       <CharacterNameBox setCharacterName={(e) => setLeaderName(e.target.value)} currentName={leaderName} />
 
       <StatsBox CharacterStats={leaderTemplate.stats} />
@@ -53,7 +60,14 @@ export default function WarbandLeaderDialog({ leaderTemplate, currentLeader }: W
 
       <div className="flex justify-between px-2 pt-3">
         <DialogClose asChild>
-          <Button onClick={handleSubmit}>submit</Button>
+          <Button
+            onClick={() => {
+              handleSubmit();
+              resetState();
+            }}
+          >
+            submit
+          </Button>
         </DialogClose>
         <DialogClose asChild>
           <Button variant="destructive">remove</Button>

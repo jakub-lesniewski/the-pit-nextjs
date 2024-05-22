@@ -38,7 +38,7 @@ export default function WarbandHeroesBox({ heroesTemplate, currentHeroes }: Warb
                 <p>{hero.type}</p>
               </li>
             </DialogTrigger>
-            <WarbandHeroDialog currentHero={hero} heroesTemplate={heroesTemplate} />
+            <WarbandHeroDialog currentHero={currentHero} heroesTemplate={heroesTemplate} />
           </Dialog>
         ))}
       </ol>
