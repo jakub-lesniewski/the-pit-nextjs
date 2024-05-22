@@ -11,11 +11,15 @@ import { X } from "lucide-react";
 type ArmourBoxProps = {
   characterArmour: Armour[];
   armourSelection: Armour[];
-  addArmour: (armour: Armour) => void;
-  removeArmour: (armourIndex: number) => void;
+  armourHandler: {
+    addArmour: (armour: Armour) => void;
+    removeArmour: (armourIndex: number) => void;
+  };
 };
 
-export default function ArmourBox({ characterArmour, armourSelection, addArmour, removeArmour }: ArmourBoxProps) {
+export default function ArmourBox({ characterArmour, armourSelection, armourHandler }: ArmourBoxProps) {
+  const { addArmour, removeArmour } = armourHandler;
+
   return (
     <div className="space-y-2 px-4 ml-4 py-2 border rounded-md w-fit">
       <div className="flex gap-3">

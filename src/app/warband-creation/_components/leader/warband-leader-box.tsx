@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import WarbandLeaderDialog from "./warband-leader-dialog";
 import { CharacterTemplate } from "@/types/characters/CharacterTemplate";
 import { UserCharacter } from "@/types/characters/UserCharacter";
+import WarbandLeaderDialog from "./warband-leader-dialog";
 
 type WarbandLeaderBoxProps = {
   leaderTemplate: CharacterTemplate;

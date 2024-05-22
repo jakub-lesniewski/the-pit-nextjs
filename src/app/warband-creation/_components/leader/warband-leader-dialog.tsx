@@ -20,8 +20,8 @@ type WarbandLeaderDialogProps = {
 
 export default function WarbandLeaderDialog({ leaderTemplate, currentLeader }: WarbandLeaderDialogProps) {
   const [leaderName, setLeaderName] = useState<string>(currentLeader?.name ?? "");
-  const { weapons: leaderWeapons, addWeapon, removeWeapon } = useWeapons();
-  const { armour: leaderArmour, addArmour, removeArmour } = useArmour();
+  const { weapons: leaderWeapons, weaponsHandler } = useWeapons();
+  const { armour: leaderArmour, armourHandlers } = useArmour();
 
   function handleSubmit() {
     console.log(leaderName);
@@ -29,7 +29,6 @@ export default function WarbandLeaderDialog({ leaderTemplate, currentLeader }: W
     console.log(leaderArmour);
   }
 
-  console.log(leaderName);
   return (
     <DialogContent>
       <CharacterNameBox setCharacterName={(e) => setLeaderName(e.target.value)} currentName={leaderName} />
@@ -40,18 +39,12 @@ export default function WarbandLeaderDialog({ leaderTemplate, currentLeader }: W
         <WeaponBox
           characterWeapons={leaderWeapons}
           weaponSelection={leaderTemplate.weaponSelection}
-          addWeapon={addWeapon}
-          removeWeapon={removeWeapon}
+          weaponsHandler={weaponsHandler}
         />
       )}
 
       {leaderTemplate.weaponSelection && (
-        <ArmourBox
-          characterArmour={leaderArmour}
-          armourSelection={dummyArmour}
-          addArmour={addArmour}
-          removeArmour={removeArmour}
-        />
+        <ArmourBox characterArmour={leaderArmour} armourSelection={dummyArmour} armourHandler={armourHandlers} />
       )}
 
       <div className="flex justify-between px-2 pt-3">

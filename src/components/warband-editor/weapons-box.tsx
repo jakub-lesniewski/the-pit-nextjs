@@ -11,11 +11,14 @@ import { X } from "lucide-react";
 type WeaponBoxProps = {
   characterWeapons: Weapon[];
   weaponSelection: Weapon[];
-  addWeapon: (weapon: Weapon) => void;
-  removeWeapon: (weaponIndex: number) => void;
+  weaponsHandler: {
+    addWeapon: (weapon: Weapon) => void;
+    removeWeapon: (weaponIndex: number) => void;
+  };
 };
 
-export default function WeaponBox({ characterWeapons, weaponSelection, addWeapon, removeWeapon }: WeaponBoxProps) {
+export default function WeaponBox({ characterWeapons, weaponSelection, weaponsHandler }: WeaponBoxProps) {
+  const { addWeapon, removeWeapon } = weaponsHandler;
   return (
     <div className="space-y-2 py-2 px-4 border rounded-md ml-4 w-fit">
       <div className="flex gap-3">

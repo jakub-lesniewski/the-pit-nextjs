@@ -17,7 +17,9 @@ export function useArmour(initialArmour: Armour[] = []) {
 
   return {
     armour,
-    addArmour,
-    removeArmour,
+    armourHandlers: {
+      addArmour,
+      removeArmour,
+    },
   };
 }

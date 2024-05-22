@@ -19,7 +19,9 @@ export function useWeapons(initialWeapons: Weapon[] = []) {
 
   return {
     weapons,
-    addWeapon,
-    removeWeapon,
+    weaponsHandler: {
+      addWeapon,
+      removeWeapon,
+    },
   };
 }
