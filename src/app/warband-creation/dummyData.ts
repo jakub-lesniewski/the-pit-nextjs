@@ -1,11 +1,13 @@
 import { Armour, ArmourType } from "@/types/Armour";
 import { CharacterStats } from "@/types/CharacterStats";
 import { Item } from "@/types/Item";
-import { Warband } from "@/types/Warband";
 import { Weapon } from "@/types/Weapon";
+import { UserWarband } from "@/types/warbands/UserWarband";
+import { WarbandTemplate } from "@/types/warbands/WarbandTemplate";
 
-export const dummyWarband: Warband = {
-  name: "Reiklanders",
+export const dummyUserWarband: UserWarband = {
+  id: "123",
+  name: "Praagmensch",
   leader: {
     id: "1",
     name: "Jan Pepik",
@@ -21,11 +23,6 @@ export const dummyWarband: Warband = {
       id: "2",
       name: "Daniik Oplachenko",
       type: "Champion",
-    },
-    {
-      id: "3",
-      name: "Ryszard Jeleń",
-      type: "Youngblood",
     },
   ],
   henchmen: [
@@ -139,4 +136,330 @@ export const dummyStats: CharacterStats = {
   initiative: 3,
   attacks: 1,
   leadership: 7,
+};
+
+export const dummyWarbandTemplate: WarbandTemplate = {
+  id: "wawabingus",
+  type: "Reiklanders",
+  leader: {
+    id: "123",
+    type: "Reiklander Mercenary Captain",
+    stats: {
+      movement: 4,
+      weapon_skill: 3,
+      ballistic_skill: 3,
+      strength: 3,
+      toughness: 3,
+      wounds: 1,
+      initiative: 4,
+      attacks: 1,
+      leadership: 7,
+    },
+    weaponSelection: [
+      {
+        id: "1",
+        name: "Sword",
+        strength: 1,
+        range: undefined,
+        cost: 20,
+      },
+      {
+        id: "4",
+        name: "Handgun",
+        strength: 3,
+        range: 8,
+        cost: 35,
+      },
+      {
+        id: "2",
+        name: "Axe",
+        strength: 2,
+        range: undefined,
+        cost: 15,
+      },
+      {
+        id: "3",
+        name: "Pistol",
+        strength: 2,
+        range: 7,
+        cost: 30,
+      },
+      {
+        id: "5",
+        name: "Dagger",
+        strength: -1,
+        range: undefined,
+        cost: 1,
+      },
+    ],
+    armourSelection: [
+      {
+        id: "1",
+        name: "Hauberk",
+        cost: 20,
+        type: ArmourType.CHEST_PIECE,
+      },
+      {
+        id: "4",
+        name: "Gambeson",
+        cost: 20,
+        type: ArmourType.CHEST_PIECE,
+      },
+      {
+        id: "2",
+        name: "Helmet",
+        cost: 50,
+        type: ArmourType.HELMET,
+      },
+      {
+        id: "3",
+        name: "Shield",
+        cost: 40,
+        type: ArmourType.SHIELD,
+      },
+    ],
+    cost: 50,
+  },
+  heroes: [
+    {
+      id: "4123452134",
+      type: "Champion",
+      stats: {
+        movement: 4,
+        weapon_skill: 3,
+        ballistic_skill: 3,
+        strength: 3,
+        toughness: 3,
+        wounds: 1,
+        initiative: 4,
+        attacks: 1,
+        leadership: 7,
+      },
+      weaponSelection: [
+        {
+          id: "1",
+          name: "Sword",
+          strength: 1,
+          range: undefined,
+          cost: 20,
+        },
+        {
+          id: "4",
+          name: "Handgun",
+          strength: 3,
+          range: 8,
+          cost: 35,
+        },
+        {
+          id: "2",
+          name: "Axe",
+          strength: 2,
+          range: undefined,
+          cost: 15,
+        },
+        {
+          id: "3",
+          name: "Pistol",
+          strength: 2,
+          range: 7,
+          cost: 30,
+        },
+        {
+          id: "5",
+          name: "Dagger",
+          strength: -1,
+          range: undefined,
+          cost: 1,
+        },
+      ],
+      armourSelection: [
+        {
+          id: "1",
+          name: "Hauberk",
+          cost: 20,
+          type: ArmourType.CHEST_PIECE,
+        },
+        {
+          id: "4",
+          name: "Gambeson",
+          cost: 20,
+          type: ArmourType.CHEST_PIECE,
+        },
+        {
+          id: "2",
+          name: "Helmet",
+          cost: 50,
+          type: ArmourType.HELMET,
+        },
+        {
+          id: "3",
+          name: "Shield",
+          cost: 40,
+          type: ArmourType.SHIELD,
+        },
+      ],
+      cost: 50,
+    },
+    {
+      id: "456",
+      type: "Youngblood",
+      stats: {
+        movement: 4,
+        weapon_skill: 3,
+        ballistic_skill: 3,
+        strength: 3,
+        toughness: 3,
+        wounds: 1,
+        initiative: 4,
+        attacks: 1,
+        leadership: 7,
+      },
+      weaponSelection: [
+        {
+          id: "1",
+          name: "Sword",
+          strength: 1,
+          range: undefined,
+          cost: 20,
+        },
+        {
+          id: "4",
+          name: "Handgun",
+          strength: 3,
+          range: 8,
+          cost: 35,
+        },
+        {
+          id: "2",
+          name: "Axe",
+          strength: 2,
+          range: undefined,
+          cost: 15,
+        },
+        {
+          id: "3",
+          name: "Pistol",
+          strength: 2,
+          range: 7,
+          cost: 30,
+        },
+        {
+          id: "5",
+          name: "Dagger",
+          strength: -1,
+          range: undefined,
+          cost: 1,
+        },
+      ],
+      armourSelection: [
+        {
+          id: "789",
+          name: "Hauberk",
+          cost: 20,
+          type: ArmourType.CHEST_PIECE,
+        },
+        {
+          id: "4",
+          name: "Gambeson",
+          cost: 20,
+          type: ArmourType.CHEST_PIECE,
+        },
+        {
+          id: "2",
+          name: "Helmet",
+          cost: 50,
+          type: ArmourType.HELMET,
+        },
+        {
+          id: "3",
+          name: "Shield",
+          cost: 40,
+          type: ArmourType.SHIELD,
+        },
+      ],
+      cost: 50,
+    },
+  ],
+  henchmen: [
+    {
+      id: "rqwrqwerqw",
+      type: "Swordsman",
+      stats: {
+        movement: 4,
+        weapon_skill: 3,
+        ballistic_skill: 3,
+        strength: 3,
+        toughness: 3,
+        wounds: 1,
+        initiative: 4,
+        attacks: 1,
+        leadership: 7,
+      },
+      weaponSelection: [
+        {
+          id: "1",
+          name: "Sword",
+          strength: 1,
+          range: undefined,
+          cost: 20,
+        },
+        {
+          id: "4",
+          name: "Handgun",
+          strength: 3,
+          range: 8,
+          cost: 35,
+        },
+        {
+          id: "2",
+          name: "Axe",
+          strength: 2,
+          range: undefined,
+          cost: 15,
+        },
+        {
+          id: "3",
+          name: "Pistol",
+          strength: 2,
+          range: 7,
+          cost: 30,
+        },
+        {
+          id: "5",
+          name: "Dagger",
+          strength: -1,
+          range: undefined,
+          cost: 1,
+        },
+      ],
+      armourSelection: [
+        {
+          id: "1",
+          name: "Hauberk",
+          cost: 20,
+          type: ArmourType.CHEST_PIECE,
+        },
+        {
+          id: "4",
+          name: "Gambeson",
+          cost: 20,
+          type: ArmourType.CHEST_PIECE,
+        },
+        {
+          id: "2",
+          name: "Helmet",
+          cost: 50,
+          type: ArmourType.HELMET,
+        },
+        {
+          id: "3",
+          name: "Shield",
+          cost: 40,
+          type: ArmourType.SHIELD,
+        },
+      ],
+      cost: 50,
+    },
+  ],
+  funds: 500,
 };

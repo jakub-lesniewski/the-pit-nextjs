@@ -4,9 +4,9 @@ import { Weapon } from "../Weapon";
 
 export type CharacterTemplate = {
   id: string;
-  name: string;
+  type: string;
   stats: CharacterStats;
   weaponSelection?: Weapon[];
-  allowedArmour?: Armour[];
+  armourSelection?: Armour[];
   cost: number;
 };
