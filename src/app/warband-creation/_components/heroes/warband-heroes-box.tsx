@@ -11,7 +11,7 @@ type WarbandHeroesBoxProps = {
 };
 
 export default function WarbandHeroesBox({ heroesTemplate, currentHeroes }: WarbandHeroesBoxProps) {
-  const [selectedHero, setSelectedHero] = useState<UserCharacter>();
+  const [currentHero, setCurrentHero] = useState<UserCharacter>();
 
   return (
     <div className="flex flex-col gap-1 border p-4">
@@ -28,12 +28,17 @@ export default function WarbandHeroesBox({ heroesTemplate, currentHeroes }: Warb
         {currentHeroes?.map((hero) => (
           <Dialog key={hero.id}>
             <DialogTrigger asChild>
-              <li className="border-b-2 p-2 flex justify-between cursor-pointer" onClick={() => setSelectedHero(hero)}>
+              <li
+                className="border-b-2 p-2 flex justify-between cursor-pointer"
+                onClick={() => {
+                  setCurrentHero(hero);
+                }}
+              >
                 <p>{hero.name}</p>
                 <p>{hero.type}</p>
               </li>
             </DialogTrigger>
-            <WarbandHeroDialog currentHero={selectedHero} heroesTemplate={heroesTemplate} />
+            <WarbandHeroDialog currentHero={hero} heroesTemplate={heroesTemplate} />
           </Dialog>
         ))}
       </ol>

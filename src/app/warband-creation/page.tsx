@@ -23,7 +23,7 @@ export default function WarbandCreation() {
         <WarbandNameBox />
         <WarbandLeaderBox leaderTemplate={leader} currentLeader={userWarband.leader} />
         <WarbandHeroesBox heroesTemplate={heroes} currentHeroes={userWarband.heroes} />
-        <WarbandHenchmenBox henchmen={henchmen} />
+        <WarbandHenchmenBox henchmenTemplate={henchmen} currentHenchmen={userWarband.henchmen} />
       </CardContent>
       <CardFooter>
         <Button className="w-full tracking-widest text-base" size="sm">

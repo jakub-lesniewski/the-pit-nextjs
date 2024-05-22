@@ -1,15 +1,15 @@
 "use client";
 
+import WeaponBox from "../../../../components/warband-editor/weapons-box";
+import ArmourBox from "../../../../components/warband-editor/armour-box";
+import StatsBox from "@/components/warband-editor/stats-box";
+import CharacterNameBox from "@/components/warband-editor/character-name-box";
 import { DialogClose, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { dummyArmour, dummyStats, dummyWeapons } from "../../dummyData";
 import { useWeapons } from "@/hooks/useWeapons";
 import { useArmour } from "@/hooks/useArmour";
 import { useState } from "react";
-import WeaponBox from "../../../../components/warband-editor/weapons-box";
-import ArmourBox from "../../../../components/warband-editor/armour-box";
-import StatsBox from "@/components/warband-editor/stats-box";
-import CharacterNameBox from "@/components/warband-editor/character-name-box";
 import { CharacterTemplate } from "@/types/characters/CharacterTemplate";
 import { UserCharacter } from "@/types/characters/UserCharacter";
 
@@ -20,7 +20,6 @@ type WarbandLeaderDialogProps = {
 
 export default function WarbandLeaderDialog({ leaderTemplate, currentLeader }: WarbandLeaderDialogProps) {
   const [leaderName, setLeaderName] = useState<string>(currentLeader?.name ?? "");
-  console.log(currentLeader);
   const { weapons: leaderWeapons, weaponsHandler } = useWeapons(currentLeader?.weapons);
   const { armour: leaderArmour, armourHandlers } = useArmour(currentLeader?.armour);
 
@@ -34,7 +33,7 @@ export default function WarbandLeaderDialog({ leaderTemplate, currentLeader }: W
     <DialogContent>
       <CharacterNameBox setCharacterName={(e) => setLeaderName(e.target.value)} currentName={leaderName} />
 
-      <StatsBox CharacterStats={dummyStats} />
+      <StatsBox CharacterStats={leaderTemplate.stats} />
 
       {leaderTemplate.weaponSelection && (
         <WeaponBox
@@ -44,8 +43,12 @@ export default function WarbandLeaderDialog({ leaderTemplate, currentLeader }: W
         />
       )}
 
-      {leaderTemplate.weaponSelection && (
-        <ArmourBox characterArmour={leaderArmour} armourSelection={dummyArmour} armourHandler={armourHandlers} />
+      {leaderTemplate.armourSelection && (
+        <ArmourBox
+          characterArmour={leaderArmour}
+          armourSelection={leaderTemplate.armourSelection}
+          armourHandler={armourHandlers}
+        />
       )}
 
       <div className="flex justify-between px-2 pt-3">

@@ -22,8 +22,8 @@ type WarbandHeroDialogProps = {
 export default function WarbandHeroDialog({ heroesTemplate, currentHero }: WarbandHeroDialogProps) {
   const [heroName, setHeroName] = useState<string>(currentHero?.name ?? "");
   const [selectedHeroType, setSelectedHeroType] = useState<CharacterTemplate>(heroesTemplate[0]);
-  const { weapons: heroWeapons, weaponsHandler } = useWeapons();
-  const { armour: heroArmour, armourHandlers } = useArmour();
+  const { weapons: heroWeapons, weaponsHandler } = useWeapons(currentHero?.weapons);
+  const { armour: heroArmour, armourHandlers } = useArmour(currentHero?.armour);
 
   function handleSubmit() {
     console.log(heroName);
@@ -35,17 +35,14 @@ export default function WarbandHeroDialog({ heroesTemplate, currentHero }: Warba
     <DialogContent>
       <CharacterNameBox setCharacterName={(e) => setHeroName(e.target.value)} currentName={heroName} />
 
-      <StatsBox CharacterStats={dummyStats} />
+      <StatsBox CharacterStats={selectedHeroType.stats} />
 
       <div className="px-4 py-2 border w-fit ml-4 rounded-md space-y-2">
         <h1>Type</h1>
         <Select
-          onValueChange={(value) => {
-            const selectedTemplate = heroesTemplate.find((hero) => hero.type === value);
-            if (selectedTemplate) {
-              setSelectedHeroType(selectedTemplate);
-            }
-          }}
+          onValueChange={(value) =>
+            setSelectedHeroType(heroesTemplate.find((hero) => hero.type === value) || selectedHeroType)
+          }
         >
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder={selectedHeroType.type} />
