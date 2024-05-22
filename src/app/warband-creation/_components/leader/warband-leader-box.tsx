@@ -13,21 +13,21 @@ export default function WarbandLeaderBox({ leaderTemplate, currentLeader }: Warb
   return (
     <div className="flex flex-col gap-1 border p-4">
       <h2>Leader</h2>
-      {currentLeader ? (
-        <Dialog>
-          <DialogTrigger>
+      <Dialog>
+        <DialogTrigger>
+          {currentLeader ? (
             <div className="border-b-2 p-2 flex justify-between cursor-pointer">
               <p>{currentLeader.name}</p>
               <p>{currentLeader.type}</p>
             </div>
-          </DialogTrigger>
-          <WarbandLeaderDialog leaderTemplate={leaderTemplate} currentLeader={currentLeader} />
-        </Dialog>
-      ) : (
-        <Button className="w-full tracking-wide text-base" variant="outline" size="sm">
-          add leader
-        </Button>
-      )}
+          ) : (
+            <Button className="w-full tracking-wide text-base" variant="outline" size="sm">
+              add leader
+            </Button>
+          )}
+        </DialogTrigger>
+        <WarbandLeaderDialog leaderTemplate={leaderTemplate} currentLeader={currentLeader} />
+      </Dialog>
     </div>
   );
 }
