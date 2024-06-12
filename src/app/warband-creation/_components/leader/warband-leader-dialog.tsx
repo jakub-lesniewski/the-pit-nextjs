@@ -48,13 +48,15 @@ export default function WarbandLeaderDialog({
   }
 
   function resetState(): void {
-    setLeaderName(currentLeader?.name || "");
-    weaponsHandler.resetWeapons();
-    armourHandlers.resetArmour();
+    if (currentLeader) {
+      setLeaderName("");
+      weaponsHandler.resetWeapons();
+      armourHandlers.resetArmour();
+    }
   }
 
   return (
-    <DialogContent onPointerDownOutside={resetState} onEscapeKeyDown={resetState}>
+    <DialogContent onPointerDownOutside={resetState}>
       <CharacterNameBox setCharacterName={(e) => setLeaderName(e.target.value)} currentName={leaderName} />
 
       <StatsBox CharacterStats={leaderTemplate.stats} />

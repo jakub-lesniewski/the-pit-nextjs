@@ -10,18 +10,18 @@ import WeaponBox from "../../../../components/warband-editor/weapons-box";
 import ArmourBox from "../../../../components/warband-editor/armour-box";
 import StatsBox from "@/components/warband-editor/stats-box";
 import CharacterNameBox from "@/components/warband-editor/character-name-box";
-import { CharacterTemplate } from "@/types/characters/CharacterTemplate";
 import { UserCharacter } from "@/types/characters/UserCharacter";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { HeroTemplate } from "@/types/characters/CharacterTemplate";
 
 type WarbandHeroDialogProps = {
-  heroesTemplate: CharacterTemplate[];
+  heroesTemplate: HeroTemplate[];
   currentHero?: UserCharacter;
 };
 
 export default function WarbandHeroDialog({ heroesTemplate, currentHero }: WarbandHeroDialogProps) {
   const [heroName, setHeroName] = useState<string>(currentHero?.name ?? "");
-  const [selectedHeroType, setSelectedHeroType] = useState<CharacterTemplate>(heroesTemplate[0]);
+  const [selectedHeroType, setSelectedHeroType] = useState<HeroTemplate>(heroesTemplate[0]);
   const { weapons: heroWeapons, weaponsHandler } = useWeapons(currentHero?.weapons);
   const { armour: heroArmour, armourHandlers } = useArmour(currentHero?.armour);
 
