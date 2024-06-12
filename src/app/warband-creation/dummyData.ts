@@ -133,6 +133,7 @@ export const dummyWarbandTemplate: WarbandTemplate = {
   leader: {
     id: "10",
     type: "Reiklander Mercenary Captain",
+    race: "human",
     stats: {
       movement: 4,
       weapon_skill: 3,
@@ -152,6 +153,7 @@ export const dummyWarbandTemplate: WarbandTemplate = {
     {
       id: "11",
       type: "Champion",
+      race: "human",
       stats: {
         movement: 4,
         weapon_skill: 3,
@@ -170,6 +172,7 @@ export const dummyWarbandTemplate: WarbandTemplate = {
     {
       id: "12",
       type: "Youngblood",
+      race: "human",
       stats: {
         movement: 4,
         weapon_skill: 3,
@@ -190,6 +193,7 @@ export const dummyWarbandTemplate: WarbandTemplate = {
     {
       id: "13",
       type: "Swordsman",
+      race: "human",
       stats: {
         movement: 4,
         weapon_skill: 3,
@@ -206,5 +210,5 @@ export const dummyWarbandTemplate: WarbandTemplate = {
       cost: 50,
     },
   ],
-  funds: 500,
+  startingFunds: 500,
 };

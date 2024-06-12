@@ -43,7 +43,7 @@ export default function WarbandHenchmenBox({
                 }}
               >
                 <p>{henchman.name}</p>
-                <p>{`${henchman.type} x${henchman.amount}`}</p>
+                <p>{`${henchman.type.type} x${henchman.amount}`}</p>
               </li>
             </DialogTrigger>
             <WarbandHenchmenDialog

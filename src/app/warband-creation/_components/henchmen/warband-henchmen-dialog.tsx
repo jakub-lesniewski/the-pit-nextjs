@@ -40,7 +40,7 @@ export default function WarbandHenchmenDialog({
   } = useHenchmen(currentHenchmen, henchmenTemplate);
 
   function handleSubmit() {
-    const newHero: UserHenchmen = {
+    const newHenchmen: UserHenchmen = {
       id: crypto.randomUUID(),
       type: selectedHenchmenType,
       name: henchmenName,
@@ -49,7 +49,7 @@ export default function WarbandHenchmenDialog({
       amount: henchmenAmount,
     };
 
-    henchmenHandlers.addHenchmen(newHero);
+    henchmenHandlers.addHenchmen(newHenchmen);
 
     resetState();
   }
