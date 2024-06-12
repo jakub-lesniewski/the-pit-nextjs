@@ -10,13 +10,13 @@ import WeaponBox from "../../../../components/warband-editor/weapons-box";
 import ArmourBox from "../../../../components/warband-editor/armour-box";
 import StatsBox from "@/components/warband-editor/stats-box";
 import CharacterNameBox from "@/components/warband-editor/character-name-box";
-import { UserCharacter, UserHero } from "@/types/characters/UserCharacter";
+import { UserHero } from "@/types/characters/UserCharacter";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { HeroTemplate } from "@/types/characters/CharacterTemplate";
 
 type WarbandHeroDialogProps = {
   heroesTemplate: HeroTemplate[];
-  currentHero?: UserCharacter;
+  currentHero?: UserHero;
   heroHandlers: {
     addHero: (newHero: UserHero) => void;
     deleteHero: (heroId: string) => void;
@@ -45,7 +45,7 @@ export default function WarbandHeroDialog({ heroesTemplate, currentHero, heroHan
   }
 
   function resetState() {
-    if (currentHero) {
+    if (!currentHero) {
       setHeroName("");
       weaponsHandler.resetWeapons();
       armourHandlers.resetArmour();

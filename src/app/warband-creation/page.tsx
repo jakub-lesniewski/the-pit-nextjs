@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { dummyUserWarband, dummyWarbandTemplate } from "./dummyData";
 import { UserWarband } from "@/types/warbands/UserWarband";
-import { UserCharacter, UserHero } from "@/types/characters/UserCharacter";
+import { UserCharacter, UserHenchmen, UserHero } from "@/types/characters/UserCharacter";
 import WarbandTitleBox from "../../components/warband-editor/warband-title-box";
 import WarbandNameBox from "../../components/warband-editor/warband-name-input";
 import WarbandHeroesBox from "./_components/heroes/warband-heroes-box";
@@ -41,6 +41,16 @@ export default function WarbandCreation() {
     },
   };
 
+  const henchmenHandlers = {
+    addHenchmen(newHenchmen: UserHenchmen) {
+      setHenchmen([...henchmen, newHenchmen]);
+    },
+
+    deleteHenchmen(henchmenId: string) {
+      setHenchmen(henchmen.filter((group) => group.id !== henchmenId));
+    },
+  };
+
   const {
     startingFunds: fundsTemplate,
     type: typeTemplate,
@@ -56,7 +66,11 @@ export default function WarbandCreation() {
         <WarbandNameBox />
         <WarbandLeaderBox leaderTemplate={leaderTemplate} currentLeader={leader} leaderHandlers={leaderHandlers} />
         <WarbandHeroesBox heroesTemplate={heroesTemplate} currentHeroes={heroes} heroHandlers={heroHandlers} />
-        <WarbandHenchmenBox henchmenTemplate={henchmenTemplate} currentHenchmen={henchmen} />
+        <WarbandHenchmenBox
+          henchmenTemplate={henchmenTemplate}
+          currentHenchmen={henchmen}
+          henchmenHandlers={henchmenHandlers}
+        />
       </CardContent>
       <CardFooter>
         <Button className="w-full tracking-widest text-base" size="sm">

@@ -15,7 +15,7 @@ type WarbandHeroesBoxProps = {
 };
 
 export default function WarbandHeroesBox({ heroesTemplate, currentHeroes, heroHandlers }: WarbandHeroesBoxProps) {
-  const [currentHero, setCurrentHero] = useState<UserCharacter>();
+  const [currentHero, setCurrentHero] = useState<UserHero>();
 
   return (
     <div className="flex flex-col gap-1 border p-4">

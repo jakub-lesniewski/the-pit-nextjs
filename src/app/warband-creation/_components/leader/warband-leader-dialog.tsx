@@ -40,15 +40,13 @@ export default function WarbandLeaderDialog({
       items: [],
     };
 
-    console.log(newLeader);
-
     leaderHandlers.addLeader(newLeader);
 
     resetState();
   }
 
-  function resetState(): void {
-    if (currentLeader) {
+  function resetState() {
+    if (!currentLeader) {
       setLeaderName("");
       weaponsHandler.resetWeapons();
       armourHandlers.resetArmour();
