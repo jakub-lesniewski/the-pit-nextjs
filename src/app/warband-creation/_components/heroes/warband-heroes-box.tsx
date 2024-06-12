@@ -1,16 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { CharacterTemplate } from "@/types/characters/CharacterTemplate";
-import { UserCharacter } from "@/types/characters/UserCharacter";
+import { HeroTemplate } from "@/types/characters/CharacterTemplate";
+import { UserCharacter, UserHero } from "@/types/characters/UserCharacter";
 import { useState } from "react";
 import WarbandHeroDialog from "./warband-hero-dialog";
 
 type WarbandHeroesBoxProps = {
-  heroesTemplate: CharacterTemplate[];
+  heroesTemplate: HeroTemplate[];
   currentHeroes?: UserCharacter[];
+  heroHandlers: {
+    addHero: (newHero: UserHero) => void;
+    deleteHero: (heroId: string) => void;
+  };
 };
 
-export default function WarbandHeroesBox({ heroesTemplate, currentHeroes }: WarbandHeroesBoxProps) {
+export default function WarbandHeroesBox({ heroesTemplate, currentHeroes, heroHandlers }: WarbandHeroesBoxProps) {
   const [currentHero, setCurrentHero] = useState<UserCharacter>();
 
   return (
@@ -22,7 +26,7 @@ export default function WarbandHeroesBox({ heroesTemplate, currentHeroes }: Warb
             add hero
           </Button>
         </DialogTrigger>
-        <WarbandHeroDialog heroesTemplate={heroesTemplate} />
+        <WarbandHeroDialog heroesTemplate={heroesTemplate} heroHandlers={heroHandlers} />
       </Dialog>
       <ol>
         {currentHeroes?.map((hero) => (
@@ -35,10 +39,10 @@ export default function WarbandHeroesBox({ heroesTemplate, currentHeroes }: Warb
                 }}
               >
                 <p>{hero.name}</p>
-                <p>{hero.type}</p>
+                <p>{hero.type.type}</p>
               </li>
             </DialogTrigger>
-            <WarbandHeroDialog currentHero={currentHero} heroesTemplate={heroesTemplate} />
+            <WarbandHeroDialog currentHero={currentHero} heroesTemplate={heroesTemplate} heroHandlers={heroHandlers} />
           </Dialog>
         ))}
       </ol>

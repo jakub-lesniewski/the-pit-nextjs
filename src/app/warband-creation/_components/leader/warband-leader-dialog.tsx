@@ -30,7 +30,7 @@ export default function WarbandLeaderDialog({
     leaderTemplate
   );
 
-  function handleSubmit(): void {
+  function handleSubmit() {
     const newLeader: UserHero = {
       id: crypto.randomUUID(),
       type: leaderTemplate,

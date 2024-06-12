@@ -31,6 +31,16 @@ export default function WarbandCreation() {
     },
   };
 
+  const heroHandlers = {
+    addHero(newHero: UserHero) {
+      setHeroes([...heroes, newHero]);
+    },
+
+    deleteHero(heroId: string) {
+      setHeroes(heroes.filter((hero) => hero.id !== heroId));
+    },
+  };
+
   const {
     startingFunds: fundsTemplate,
     type: typeTemplate,
@@ -45,7 +55,7 @@ export default function WarbandCreation() {
       <CardContent className="flex flex-col gap-3">
         <WarbandNameBox />
         <WarbandLeaderBox leaderTemplate={leaderTemplate} currentLeader={leader} leaderHandlers={leaderHandlers} />
-        <WarbandHeroesBox heroesTemplate={heroesTemplate} currentHeroes={heroes} />
+        <WarbandHeroesBox heroesTemplate={heroesTemplate} currentHeroes={heroes} heroHandlers={heroHandlers} />
         <WarbandHenchmenBox henchmenTemplate={henchmenTemplate} currentHenchmen={henchmen} />
       </CardContent>
       <CardFooter>
