@@ -6,34 +6,51 @@ import StatsBox from "@/components/warband-editor/stats-box";
 import CharacterNameBox from "@/components/warband-editor/character-name-box";
 import { DialogClose, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { dummyArmour, dummyStats, dummyWeapons } from "../../dummyData";
-import { useWeapons } from "@/hooks/useWeapons";
-import { useArmour } from "@/hooks/useArmour";
+import { useLeader } from "@/hooks/useLeader";
 import { useState } from "react";
-import { CharacterTemplate } from "@/types/characters/CharacterTemplate";
-import { UserCharacter } from "@/types/characters/UserCharacter";
+import { HeroTemplate } from "@/types/characters/CharacterTemplate";
+import { UserCharacter, UserHero } from "@/types/characters/UserCharacter";
 
 type WarbandLeaderDialogProps = {
-  leaderTemplate: CharacterTemplate;
-  currentLeader?: UserCharacter;
+  leaderTemplate: HeroTemplate;
+  currentLeader?: UserHero;
+  leaderHandlers: {
+    addLeader: (newLeader: UserCharacter) => void;
+    deleteLeader: () => void;
+  };
 };
 
-export default function WarbandLeaderDialog({ leaderTemplate, currentLeader }: WarbandLeaderDialogProps) {
-  const [leaderName, setLeaderName] = useState<string>(currentLeader?.name ?? "");
-  const { weapons: leaderWeapons, weaponsHandler, setWeapons } = useWeapons(currentLeader?.weapons);
-  const { armour: leaderArmour, armourHandlers, setArmour } = useArmour(currentLeader?.armour);
+export default function WarbandLeaderDialog({
+  leaderTemplate,
+  currentLeader,
+  leaderHandlers,
+}: WarbandLeaderDialogProps) {
+  const { leaderName, setLeaderName, leaderWeapons, weaponsHandler, leaderArmour, armourHandlers } = useLeader(
+    currentLeader,
+    leaderTemplate
+  );
 
   function handleSubmit(): void {
-    console.log(leaderName);
-    console.log(leaderWeapons);
-    console.log(leaderArmour);
+    const newLeader: UserHero = {
+      id: crypto.randomUUID(),
+      type: leaderTemplate,
+      name: leaderName,
+      weapons: leaderWeapons,
+      armour: leaderArmour,
+      items: [],
+    };
+
+    console.log(newLeader);
+
+    leaderHandlers.addLeader(newLeader);
+
     resetState();
   }
 
   function resetState(): void {
     setLeaderName(currentLeader?.name || "");
-    setWeapons(currentLeader?.weapons || []);
-    setArmour(currentLeader?.armour || []);
+    weaponsHandler.resetWeapons();
+    armourHandlers.resetArmour();
   }
 
   return (
@@ -69,9 +86,19 @@ export default function WarbandLeaderDialog({ leaderTemplate, currentLeader }: W
             submit
           </Button>
         </DialogClose>
-        <DialogClose asChild>
-          <Button variant="destructive">remove</Button>
-        </DialogClose>
+        {currentLeader && (
+          <DialogClose asChild>
+            <Button
+              variant="destructive"
+              onClick={() => {
+                leaderHandlers.deleteLeader();
+                resetState();
+              }}
+            >
+              remove
+            </Button>
+          </DialogClose>
+        )}
       </div>
     </DialogContent>
   );

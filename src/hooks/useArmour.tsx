@@ -15,12 +15,16 @@ export function useArmour(initialArmour: Armour[] = []) {
     setArmour(newArmour);
   }
 
+  function resetArmour() {
+    setArmour([]);
+  }
+
   return {
     armour,
-    setArmour,
     armourHandlers: {
       addArmour,
       removeArmour,
+      resetArmour,
     },
   };
 }

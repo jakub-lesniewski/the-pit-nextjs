@@ -17,12 +17,16 @@ export function useWeapons(initialWeapons: Weapon[] = []) {
     setWeapons(newWeapons);
   }
 
+  function resetWeapons() {
+    setWeapons([]);
+  }
+
   return {
     weapons,
-    setWeapons,
     weaponsHandler: {
       addWeapon,
       removeWeapon,
+      resetWeapons,
     },
   };
 }

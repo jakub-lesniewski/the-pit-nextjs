@@ -1,10 +1,10 @@
-import { CharacterTemplate } from "../characters/CharacterTemplate";
+import { HenchmenTemplate, HeroTemplate } from "../characters/CharacterTemplate";
 
 export type WarbandTemplate = {
   id: string;
   type: string;
-  leader: CharacterTemplate;
-  heroes: CharacterTemplate[];
-  henchmen: CharacterTemplate[];
-  funds: number;
+  leader: HeroTemplate;
+  heroes: HeroTemplate[];
+  henchmen: HenchmenTemplate[];
+  startingFunds: number;
 };
