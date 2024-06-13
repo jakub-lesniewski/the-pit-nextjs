@@ -1,5 +1,6 @@
 import { Weapon, isRanged } from "@/types/Weapon";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export function useWeapons(initialWeapons: Weapon[] = []) {
   const [weapons, setWeapons] = useState<Weapon[]>(initialWeapons);
@@ -9,6 +10,8 @@ export function useWeapons(initialWeapons: Weapon[] = []) {
       setWeapons((prevWeapons) => [...prevWeapons, weapon]);
     } else if (weapons.filter((weapon) => isRanged(weapon)).length < 2 && isRanged(weapon)) {
       setWeapons((prevWeapons) => [...prevWeapons, weapon]);
+    } else {
+      toast("Cannot exceed weapon limit");
     }
   }
 

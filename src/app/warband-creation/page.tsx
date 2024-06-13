@@ -6,6 +6,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { dummyUserWarband, dummyWarbandTemplate } from "./dummyData";
 import { UserWarband } from "@/types/warbands/UserWarband";
 import { UserCharacter, UserHenchmen, UserHero } from "@/types/characters/UserCharacter";
+import { toast } from "sonner";
 import WarbandTitleBox from "../../components/warband-editor/warband-title-box";
 import WarbandNameBox from "../../components/warband-editor/warband-name-input";
 import WarbandHeroesBox from "./_components/heroes/warband-heroes-box";
@@ -73,7 +74,11 @@ export default function WarbandCreation() {
         />
       </CardContent>
       <CardFooter>
-        <Button className="w-full tracking-widest text-base" size="sm">
+        <Button
+          className="w-full tracking-widest text-base"
+          size="sm"
+          onClick={() => toast("Warband Successfully submitted")}
+        >
           submit
         </Button>
       </CardFooter>

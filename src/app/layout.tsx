@@ -3,6 +3,7 @@ import { Lusitana } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { Toaster } from "@/components/ui/sonner";
 import Header from "@/components/header/header";
 import Footer from "@/components/ui/footer";
 import Image from "next/image";
@@ -25,9 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <UserProvider>
-        <body className={cn("font-sans antialiased relative", lusitana.className)}>
-          <ThemeProvider attribute="class" disableTransitionOnChange={false}>
+      <body className={cn("font-sans antialiased relative", lusitana.className)}>
+        <ThemeProvider attribute="class" disableTransitionOnChange={false}>
+          <UserProvider>
             <Image
               className="object-cover object-center dark:invert -z-50"
               quality={10}
@@ -38,9 +39,10 @@ export default function RootLayout({
             <Header />
             <main className="min-h-screen flex items-center justify-center">{children}</main>
             <Footer />
-          </ThemeProvider>
-        </body>
-      </UserProvider>
+            <Toaster />
+          </UserProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

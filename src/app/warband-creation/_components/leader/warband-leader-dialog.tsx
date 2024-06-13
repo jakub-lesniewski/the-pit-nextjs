@@ -46,7 +46,7 @@ export default function WarbandLeaderDialog({
   }
 
   function resetState() {
-    if (!currentLeader) {
+    if (currentLeader) {
       setLeaderName("");
       weaponsHandler.resetWeapons();
       armourHandlers.resetArmour();
